@@ -1,407 +1,243 @@
-# Project Nura
+# Nura
 
-**See information. Hear understanding.**
+**See it. Hear it. Understand it.**
 
-Nura is an AI-powered visual accessibility system designed for people who are blind or visually impaired. It transforms visual information that would otherwise be inaccessible into contextual, spoken information.
+Nura is an AI-powered visual screen reader designed for blind and visually impaired users. It makes visual information accessible through voice.
 
-The initial product is designed as a web/mobile experience and browser extension, with the long-term goal of integrating the same intelligence into a flexible, foldable hardware screen reader.
+Point a phone camera at a book, sign, document, receipt, or Kenyan banknote. Nura captures it, reads it, understands what it means, and speaks the result. Follow-up questions use the current scan — no second capture required.
 
-## Problem
-
-Most digital accessibility tools are optimized for structured digital interfaces. However, visually impaired people encounter large amounts of important information in the physical world that is inherently visual:
-
-- Books and printed documents
-- Street and building signage
-- Currency
-- Product labels
-- Receipts
-- Posters and notices
-- Forms
-- Screens and digital displays
-- Maps, charts and diagrams
-
-Nura focuses on making this information accessible through vision-to-voice interaction.
-
-## Core Concept
-
-The user points a camera at visual information and Nura:
-
-1. Captures the visual input
-2. Detects and extracts relevant information
-3. Uses AI to understand the content and context
-4. Converts the result into natural spoken output
-5. Allows the user to ask follow-up questions about what was captured
-
-### Example
-
-**User points at a street sign**
-
-> "The sign reads Kenyatta Avenue."
-
-**User points at a Kenyan banknote**
-
-> "This is a one thousand Kenyan shilling note."
-
-**User points at a textbook**
-
-> "The heading reads Cellular Respiration."
-
-The goal is not to describe every object in the environment. Nura prioritizes **information-bearing visual content**.
-
-## Core MVP Features
-
-### 1. Text Reading
-
-- OCR-based text extraction
-- Books
-- Documents
-- Receipts
-- Forms
-- Posters
-- Printed notices
-- Small or difficult-to-read text
-
-### 2. Signage Reading
-
-Recognition and spoken interpretation of:
-
-- Street signs
-- Building names
-- Room numbers
-- Directional signs
-- Public notices
-- Shop signs
-- Institutional signage
-
-### 3. Currency Recognition
-
-Initial focus:
-
-- Kenyan currency
-
-The architecture should support expansion to other currencies.
-
-### 4. Contextual Understanding
-
-Instead of only extracting raw OCR text, Nura can explain what the captured information means.
-
-For example:
-
-> "This appears to be a university admission letter. The important information is your admission status, reporting date and program."
-
-### 5. Ask About What You See
-
-Users can ask natural-language questions about the current visual context:
-
-- "What does this say?"
-- "Read the heading."
-- "What is the important information?"
-- "What denomination is this?"
-- "What does this document mean?"
-- "Repeat that."
-- "Read the next paragraph."
-
-### 6. Voice Output
-
-ElevenLabs provides the spoken interaction layer, allowing visual information to become accessible through natural audio.
-
-## Product Interfaces
-
-Nura is designed as one intelligence engine with multiple interfaces.
-
-```text
-                         Nura
-                  Visual Intelligence
-                         Engine
-                           |
-          +----------------+----------------+
-          |                |                |
-       Mobile             Web          Browser Extension
-          |                |                |
-          +----------------+----------------+
-                           |
-                     Future Hardware
-                           |
-                    Camera + Controls
-                           |
-                      Audio Output
-                           |
-                        Earbuds
-```
-
-### Web
-
-A browser-based interface for rapid access and demonstrations.
-
-### Mobile
-
-A camera-first interface designed around accessibility and voice interaction.
-
-### Browser Extension
-
-Designed to make web pages, images, buttons, forms and other digital content easier to access.
-
-### Hardware
-
-The long-term vision is a small, flexible and foldable visual reader that can be attached or positioned over:
-
-- Books
-- Laptops
-- Mobile phones
-- Desks
-- Other surfaces
-
-The hardware would provide the camera and physical controls while Nura provides the intelligence.
-
-## Hardware Vision
-
-The eventual device should be portable, flexible and simple to operate.
-
-Possible interaction model:
-
-```text
-              +-------------------+
-              |      CAMERA       |
-              +---------+---------+
-                        |
-                   Visual Input
-                        |
-                        v
-                 NURA ENGINE
-                        |
-                        v
-                 Voice Response
-                        |
-                        v
-                   Bluetooth
-                        |
-                        v
-                     Earbuds
-```
-
-Potential physical controls:
-
-- Capture / Read
-- Ask
-- Repeat / Stop
-
-The hardware should not require a complicated interface.
-
-## Technology Stack
-
-### Required Hackathon Products
-
-**ElevenLabs**
-- Voice output
-- Natural speech
-- Speech interaction where applicable
-
-**Cursor**
-- AI-assisted development
-- Agentic coding
-- Rapid implementation
-- Testing and debugging
-
-**Render**
-- Backend/API deployment
-- Cloud infrastructure
-- Future background processing and persistence
-
-### Supporting Technologies
-
-The implementation can use technologies such as:
-
-- Python
-- FastAPI
-- Computer vision
-- OCR
-- Multimodal AI
-- JavaScript
-- HTML/CSS
-- PostgreSQL
-
-The exact implementation can evolve as the MVP is developed.
-
-## High-Level Architecture
-
-```text
-Camera / Browser
-       |
-       v
-Visual Input
-       |
-       v
-Vision + OCR Layer
-       |
-       +---------> Text
-       |
-       +---------> Currency
-       |
-       +---------> Signage
-       |
-       +---------> Document
-       |
-       +---------> Image / Visual Context
-                       |
-                       v
-                Context Engine
-                       |
-                       v
-                AI Response
-                       |
-                       v
-                  ElevenLabs
-                       |
-                       v
-                   Audio Output
-```
-
-## MVP Priority
-
-Because the initial implementation is being developed under a short hackathon timeline, development is prioritized as follows.
-
-### P0 — Essential
-
-- Camera/image capture
-- Text reading
-- Signage recognition
-- Kenyan currency recognition
-- Contextual visual understanding
-- Voice output
-- Ask questions about captured content
-
-### P1 — Important
-
-- Reading history
-- Follow-up questions
-- Voice commands
-- Reading speed controls
-- Browser extension
-- Improved document structure detection
-
-### P2 — Future
-
-- Native mobile applications
-- Foldable hardware prototype
-- Offline/edge inference
-- Additional currencies
-- Multilingual support
-- Advanced document understanding
-- Specialized accessibility deployments
-- Device management
-
-## Design Principles
-
-### Voice-first
-
-The primary output should be accessible without requiring visual interaction.
-
-### Information-first
-
-The system should prioritize text, signage, currency, documents and other meaningful visual information rather than narrating every object in the environment.
-
-### Context-aware
-
-Nura should move beyond raw OCR and help users understand what the information means.
-
-### Confidence-aware
-
-The system should communicate uncertainty rather than confidently presenting potentially incorrect information.
-
-Example:
-
-> "I believe this is a 500 shilling note, but I'm not completely certain."
-
-### Minimal interaction
-
-The user should be able to accomplish common tasks with a small number of commands.
-
-### Portable
-
-The eventual hardware should work across books, phones, laptops and other everyday surfaces.
-
-### Privacy-conscious
-
-Images and audio should be processed transiently by default wherever practical. Persistent storage should be minimized and explicit when needed.
-
-## Example User Journey
-
-```text
-User points camera at a document
-            |
-            v
-       Capture image
-            |
-            v
-      Detect document
-            |
-            v
-       Extract text
-            |
-            v
-      Understand context
-            |
-            v
-  Generate concise response
-            |
-            v
-      ElevenLabs voice
-            |
-            v
-          User
-            |
-            v
-     "What is the date?"
-            |
-            v
-      Context-aware answer
-```
-
-## Long-Term Vision
-
-Nura aims to become an **intelligent visual access layer** that can sit between the physical/digital world and a person's preferred method of interaction.
-
-The long-term platform can power:
-
-- Mobile accessibility
-- Web accessibility
-- Browser accessibility
-- Assistive hardware
-- Educational environments
-- Public institutions
-- Workplaces
-- Libraries
-- Transportation environments
-- Other accessibility-focused deployments
-
-The fundamental idea remains simple:
-
-> **Visual information should not be inaccessible simply because it cannot be seen.**
-
-## Hackathon Demonstration
-
-The recommended demonstration flow is:
-
-1. Read a printed page
-2. Read a street/building sign
-3. Identify Kenyan currency
-4. Understand a document or poster
-5. Ask a follow-up question
-6. Demonstrate spoken output through ElevenLabs
-7. Show the future foldable hardware concept
-
-The presentation should emphasize that the prototype is the first interface to a broader **visual intelligence engine**, rather than the final hardware product.
-
-## Status
-
-**Hackathon MVP — In Development**
-
-The current focus is proving the core experience:
-
-**Capture → Understand → Speak → Ask**
+Nura is a **visual information accessibility system**. It is not a generic environmental assistant, navigator, or object detector.
 
 ---
 
-## License
+## Problem
 
-To be determined.
+Printed text, signs, forms, and currency are inaccessible without sight. Existing camera apps often describe the scene ("there is a chair") instead of reading the information that actually matters.
+
+## Solution
+
+Nura answers one question:
+
+> What visual information is here, and what does it mean?
+
+The PWA is the first interface. The same backend APIs are designed so a future lightweight physical reader can call them without rewriting the intelligence layer.
+
+## Features
+
+- Camera capture with rear camera, torch, and image compression
+- Reading modes: **Read**, **Currency (KES)**, **Sign**, **Document**, **Ask**
+- Structured analysis (title, important fields, summary, spoken text)
+- ElevenLabs text-to-speech and speech-to-text (Scribe) on the backend
+- Short-term scan context for follow-up questions
+- History, settings, offline shell, and PWA install
+- User-facing errors only — no technical stack traces in the UI
+
+## Architecture
+
+```text
+                         NURA
+                 VISUAL ACCESS ENGINE
+                          |
+              +-----------+-----------+
+              |           |           |
+             OCR       VISION       CONTEXT
+              |           |           |
+              +-----------+-----------+
+                          |
+                    STRUCTURED DATA
+                          |
+                     AI RESPONSE
+                          |
+                  +-------+-------+
+                  |               |
+                 TEXT          ELEVENLABS
+                                  |
+                               AUDIO
+```
+
+```mermaid
+flowchart TD
+  camera[Phone camera] --> capture[Capture and compress]
+  capture --> api[POST /api/analyze]
+  api --> preprocess[Image preprocessing]
+  preprocess --> vision[VisionProvider / OCRProvider]
+  vision --> classify[Content classification]
+  classify --> structured[Structured result]
+  structured --> context[Session context]
+  structured --> tts[ElevenLabs TTS]
+  tts --> audio[Audio to phone or earbuds]
+  context --> ask[POST /api/ask]
+  ask --> tts
+```
+
+```mermaid
+flowchart LR
+  engine[Nura AI Engine]
+  engine --> pwa[PWA]
+  engine --> mobile[Mobile app]
+  engine --> ext[Browser extension]
+  pwa --> hardware[Physical Nura Reader]
+  mobile --> hardware
+  ext --> hardware
+```
+
+Frontend and backend are loosely coupled over REST. Business logic lives in the API, not in React components.
+
+## Tech stack
+
+| Layer | Stack |
+| --- | --- |
+| Frontend | React, Vite, TypeScript, Tailwind CSS, PWA |
+| Backend | Python, FastAPI, Pydantic, Uvicorn |
+| Voice | ElevenLabs TTS + Scribe STT |
+| Vision | Pluggable Gemini or OpenAI vision providers |
+
+## Repository layout
+
+```text
+nura/
+├── frontend/     React PWA
+├── backend/      FastAPI visual engine
+├── render.yaml
+└── README.md
+```
+
+## Local setup
+
+### Backend
+
+```bash
+cd nura/backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+# add ELEVENLABS_API_KEY and AI_API_KEY
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+### Frontend
+
+```bash
+cd nura/frontend
+cp .env.example .env
+npm install
+npm run dev
+```
+
+If port 8000 is already in use, start the API on another port and set `VITE_API_URL` in `frontend/.env`.
+
+Open `http://localhost:5173`. Vite proxies `/api` and `/health` to the backend when `VITE_API_URL` is empty.
+
+### Tests
+
+```bash
+cd nura/backend && pytest
+cd nura/frontend && npm test
+```
+
+## Environment variables
+
+Copy `backend/.env.example`. Never commit `.env`.
+
+| Variable | Purpose |
+| --- | --- |
+| `ELEVENLABS_API_KEY` | Server-only ElevenLabs key |
+| `ELEVENLABS_VOICE_ID` | Voice used for spoken results |
+| `ELEVENLABS_MODEL_ID` | Low-latency TTS model, default `eleven_flash_v2_5` |
+| `AI_PROVIDER` | `gemini`, `openai`, or `none` |
+| `AI_API_KEY` | Server-only vision provider key |
+| `AI_MODEL` | Optional model override |
+| `FRONTEND_URL` | Production PWA origin |
+| `CORS_ORIGINS` | Comma-separated allowed origins |
+| `VITE_API_URL` | Frontend build-time API base URL |
+
+The ElevenLabs key is never sent to the browser.
+
+## ElevenLabs setup
+
+1. Create an ElevenLabs account and API key.
+2. Choose a voice ID from the ElevenLabs dashboard.
+3. Set `ELEVENLABS_MODEL_ID` to a low-latency model such as `eleven_flash_v2_5`.
+4. Speech-to-text uses Scribe (`scribe_v2`) through `POST /api/stt` and `POST /api/ask`.
+
+If TTS is unavailable, the PWA still shows the text result. Browser `SpeechSynthesis` is not used as the primary voice path.
+
+## API
+
+| Method | Path | Purpose |
+| --- | --- | --- |
+| GET | `/health` | `{ "status": "ok", "service": "nura-api" }` |
+| GET | `/docs` | OpenAPI |
+| POST | `/api/analyze` | General visual analysis |
+| POST | `/api/read` | General reading |
+| POST | `/api/currency` | Kenyan Shilling recognition |
+| POST | `/api/sign` | Sign reading |
+| POST | `/api/document` | Document understanding |
+| POST | `/api/ask` | Follow-up question (text or audio) |
+| POST | `/api/tts` | ElevenLabs speech |
+| POST | `/api/stt` | ElevenLabs transcription |
+
+Image and audio endpoints accept multipart uploads. Successful responses look like:
+
+```json
+{
+  "success": true,
+  "type": "document",
+  "result": {
+    "text": "...",
+    "title": "University Admission Letter",
+    "important_information": ["Admission confirmed"],
+    "summary": "This is a university admission letter."
+  },
+  "audio": { "mime_type": "audio/mpeg", "base64": "..." },
+  "confidence": 0.94
+}
+```
+
+Send `X-Nura-Session` to keep scan context for Ask.
+
+## Render deployment
+
+`render.yaml` defines:
+
+- **nura-api** — Uvicorn on `0.0.0.0:$PORT`
+- **nura-pwa** — static Vite build
+
+Set secrets in the Render dashboard. Production start command:
+
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port $PORT
+```
+
+Point `VITE_API_URL` at the HTTPS API origin and add that PWA origin to `CORS_ORIGINS`.
+
+## PWA installation
+
+1. Open Nura in a supported mobile browser over HTTPS.
+2. Use Add to Home Screen, or the in-app install prompt.
+3. Grant camera (and microphone, for Ask).
+
+When offline, Nura shows:
+
+> Nura is offline. Previously saved content remains available, but visual analysis requires a connection.
+
+Cloud vision and ElevenLabs are not simulated offline.
+
+## Demo scenarios
+
+1. **Book** — Point at a page, tap Read, hear the text.
+2. **Street sign** — "The sign reads Kenyatta Avenue."
+3. **KES note** — "This is a one thousand Kenyan shilling note."
+4. **Document** — Identify the document, then ask "What's important?"
+5. **Follow-up** — "When is the deadline?" using current scan context.
+
+## Future hardware
+
+Do not look for firmware in this repository. The phone camera and earbuds stand in for the eventual foldable reader. Hardware clients should call the same endpoints:
+
+- `POST /api/analyze`
+- `POST /api/ask`
+- `POST /api/tts`
+
+Providers (`VisionProvider`, `OCRProvider`, `CurrencyProvider`, `ContextProvider`, `SpeechProvider`) can be swapped without changing the PWA.
