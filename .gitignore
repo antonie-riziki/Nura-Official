@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -217,13 +216,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
-=======
-# Nura
-nura/frontend/node_modules/
-nura/frontend/dist/
-nura/frontend/dev-dist/
-nura/backend/.venv/
-nura/backend/.pytest_cache/
-nura/backend/**/__pycache__/
+
+# Nura app
+frontend/node_modules/
+frontend/dist/
+frontend/dev-dist/
+backend/.venv/
+backend/.pytest_cache/
+backend/**/__pycache__/
 *.tsbuildinfo
->>>>>>> nura-ui
